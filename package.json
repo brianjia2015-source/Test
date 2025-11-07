@@ -1,0 +1,34 @@
+{
+  "name": "devarena-platform",
+  "version": "1.0.0",
+  "description": "Game developer platform built by developers, for developers",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "deploy": "netlify deploy --prod",
+    "deploy:preview": "netlify deploy"
+  },
+  "keywords": [
+    "game-development",
+    "freelance",
+    "marketplace",
+    "funding",
+    "open-source",
+    "game-dev",
+    "unity",
+    "unreal",
+    "indie-games"
+  ],
+  "author": "DevArena Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/devarena.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/devarena/issues"
+  },
+  "homepage": "https://devarena.dev",
+  "devDependencies": {},
+  "dependencies": {}
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - DevArena</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        
+        .admin-header {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .stat-card h3 {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .admin-tab {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .admin-tab.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .data-table {
+            width: 100%;
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: var(--dark-bg);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .data-table tr:hover {
+            background: var(--dark-bg);
+        }
+        
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+        }
+        
+        .status-approved {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .status-rejected {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-small {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--dark-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🛡️ Admin Panel</h1>
+            <p>Manage your DevArena platform</p>
+        </div>
+        
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <div class="value" id="totalUsers">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Jobs</h3>
+                <div class="value" id="activeJobs">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Applications</h3>
+                <div class="value" id="pendingApps">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Revenue</h3>
+                <div class="value" id="totalRevenue">$0</div>
+            </div>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchTab('users')">Users</button>
+            <button class="admin-tab" onclick="switchTab('jobs')">Freelance Jobs</button>
+            <button class="admin-tab" onclick="switchTab('funding')">Funding Applications</button>
+            <button class="admin-tab" onclick="switchTab('marketplace')">Marketplace</button>
+            <button class="admin-tab" onclick="switchTab('opensource')">Open Source</button>
+            <button class="admin-tab" onclick="switchTab('settings')">Settings</button>
+        </div>
+        
+        <!-- Users Tab -->
+        <div id="users-tab" class="tab-content active">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <h2>User Management</h2>
+                <button class="btn-primary" onclick="showAddUserModal()">Add User</button>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">Loading users...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Jobs Tab -->
+        <div id="jobs-tab" class="tab-content">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <h2>Freelance Jobs</h2>
+                <button class="btn-primary" onclick="showAddJobModal()">Post Job</button>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Budget</th>
+                            <th>Posted By</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobsTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">Loading jobs...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Funding Tab -->
+        <div id="funding-tab" class="tab-content">
+            <h2>Funding Applications</h2>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Developer</th>
+                            <th>Amount Requested</th>
+                            <th>Status</th>
+                            <th>Submitted</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fundingTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">Loading applications...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Marketplace Tab -->
+        <div id="marketplace-tab" class="tab-content">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                <h2>Marketplace Products</h2>
+                <button class="btn-primary" onclick="showAddProductModal()">Add Product</button>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Developer</th>
+                            <th>Price</th>
+                            <th>Sales</th>
+                            <th>Revenue</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">Loading products...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Open Source Tab -->
+        <div id="opensource-tab" class="tab-content">
+            <h2>Open Source Packages</h2>
+            <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem;">
+                <h3>Funding Pool</h3>
+                <p style="color: var(--text-secondary);">10% of platform revenue goes to community-voted packages</p>
+                <div style="font-size: 2rem; color: var(--success-color); margin-top: 1rem;" id="fundingPool">$0</div>
+            </div>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Package Name</th>
+                            <th>Repository</th>
+                            <th>Votes</th>
+                            <th>Monthly Funding</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packagesTableBody">
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem;">Loading packages...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+            <h2>Platform Settings</h2>
+            <div style="display: grid; gap: 2rem;">
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px;">
+                    <h3>Platform Fees</h3>
+                    <div class="form-group">
+                        <label>Freelance Marketplace Fee (%)</label>
+                        <input type="number" id="freelanceFee" value="2.5" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label>Marketplace Product Fee (%)</label>
+                        <input type="number" id="productFee" value="5" step="0.1">
+                    </div>
+                    <button class="btn-primary" onclick="saveSettings()">Save Settings</button>
+                </div>
+                
+                <div style="background: var(--card-bg); padding: 2rem; border-radius: 12px;">
+                    <h3>Admin Management</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Add or remove admin privileges</p>
+                    <div class="form-group">
+                        <label>User Email</label>
+                        <input type="email" id="adminEmail" placeholder="user@example.com">
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn-primary" onclick="grantAdmin()">Grant Admin</button>
+                        <button class="btn-secondary" onclick="revokeAdmin()">Revoke Admin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals will be added here -->
+    <div id="modalContainer"></div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="../src/firebase-config.js"></script>
+    <script src="../src/admin.js"></script>
+</body>
+</html>

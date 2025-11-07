@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevArena - Game Developer Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🎮 DevArena</h1>
+                <p class="tagline">By Developers, For Developers</p>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#freelance">Freelance</a></li>
+                <li><a href="#funding">Funding</a></li>
+                <li><a href="#marketplace">Marketplace</a></li>
+                <li><a href="#opensource">Open Source</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-secondary" id="loginBtn">Login</button>
+                <button class="btn-primary" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Game Developer Platform You Deserve</h1>
+                <p class="hero-subtitle">Ultra-low fees. No scams. Built by developers, for developers.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>2.5%</h3>
+                        <p>Platform Fee</p>
+                    </div>
+                    <div class="stat">
+                        <h3>$0</h3>
+                        <p>Hidden Costs</p>
+                    </div>
+                    <div class="stat">
+                        <h3>100%</h3>
+                        <p>Scam Protection</p>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <button class="btn-large btn-primary">Get Started</button>
+                    <button class="btn-large btn-secondary">Join Discord</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Game Section -->
+    <section class="featured-game">
+        <div class="container">
+            <div class="game-banner">
+                <h2>🚗 Featured: CATS Arena Reborn</h2>
+                <p>Assemble your battle car, enchant your weapons, and dominate the arena!</p>
+                <div class="game-features">
+                    <div class="feature-card">
+                        <h3>⚔️ Build & Battle</h3>
+                        <p>Assemble unique car combinations with strategic part placement</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>✨ PIT Enchantments</h3>
+                        <p>Lifesteal, Fire Aspect, Damage Boost - Max 3 per build!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎯 Strategic Combat</h3>
+                        <p>Drop into the arena and outplay your opponents</p>
+                    </div>
+                </div>
+                <button class="btn-primary">Play Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Freelance Marketplace -->
+    <section id="freelance" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>💼 Freelance Marketplace</h2>
+                <p>Find work or hire talent. Only 2.5% fee - the lowest in the industry.</p>
+            </div>
+            
+            <div class="scam-warning">
+                <h3>⚠️ Scam Prevention Notice</h3>
+                <p><strong>NEVER conduct transactions off-platform!</strong> Our low fees exist to keep you safe. Going off-platform voids all protection and support.</p>
+                <ul>
+                    <li>✓ All payments processed through secure escrow</li>
+                    <li>✓ Dispute resolution by experienced game dev admins</li>
+                    <li>✓ Verified developer badges</li>
+                    <li>✓ Transaction history and ratings</li>
+                </ul>
+            </div>
+
+            <div class="marketplace-filters">
+                <select id="categoryFilter">
+                    <option>All Categories</option>
+                    <option>Programming</option>
+                    <option>3D Modeling</option>
+                    <option>2D Art</option>
+                    <option>Sound Design</option>
+                    <option>Game Design</option>
+                    <option>UI/UX</option>
+                </select>
+                <input type="text" placeholder="Search services..." id="searchBar">
+                <button class="btn-primary">Search</button>
+            </div>
+
+            <div class="listings-grid" id="freelanceListings">
+                <!-- Sample listings -->
+                <div class="listing-card">
+                    <div class="listing-header">
+                        <img src="https://via.placeholder.com/50" alt="Dev Avatar" class="avatar">
+                        <div>
+                            <h3>Unity C# Developer</h3>
+                            <p class="developer-name">@JohnDev <span class="verified">✓</span></p>
+                        </div>
+                    </div>
+                    <p class="listing-desc">Expert Unity developer with 5+ years experience. Multiplayer, UI, gameplay mechanics.</p>
+                    <div class="listing-footer">
+                        <span class="price">$50-100/hr</span>
+                        <button class="btn-secondary">Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-header">
+                        <img src="https://via.placeholder.com/50" alt="Dev Avatar" class="avatar">
+                        <div>
+                            <h3>3D Character Artist</h3>
+                            <p class="developer-name">@Maya3D <span class="verified">✓</span></p>
+                        </div>
+                    </div>
+                    <p class="listing-desc">Creating stunning game-ready characters. Blender & ZBrush specialist.</p>
+                    <div class="listing-footer">
+                        <span class="price">$300-500/model</span>
+                        <button class="btn-secondary">Contact</button>
+                    </div>
+                </div>
+
+                <div class="listing-card">
+                    <div class="listing-header">
+                        <img src="https://via.placeholder.com/50" alt="Dev Avatar" class="avatar">
+                        <div>
+                            <h3>Sound Designer</h3>
+                            <p class="developer-name">@AudioMaster <span class="verified">✓</span></p>
+                        </div>
+                    </div>
+                    <p class="listing-desc">Complete audio solutions: SFX, music, voice acting integration.</p>
+                    <div class="listing-footer">
+                        <span class="price">$200-400/project</span>
+                        <button class="btn-secondary">Contact</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 2rem;">Post a Job</button>
+        </div>
+    </section>
+
+    <!-- Funding Section -->
+    <section id="funding" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>💰 Funding Applications</h2>
+                <p>Get funded by our community and admin team. Share profits, not ownership (unless you choose to).</p>
+            </div>
+
+            <div class="funding-info">
+                <h3>How It Works</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>1. Submit Application</h4>
+                        <p>Describe your game, team, and funding needs</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>2. Admin Review</h4>
+                        <p>Our experienced game dev team reviews your project</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>3. Choose Terms</h4>
+                        <p>Profit-share (revenue or net profit) OR equity stake</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>4. Get Funded</h4>
+                        <p>Receive funds and start building your dream game</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="funding-terms">
+                <h3>Funding Options</h3>
+                <div class="terms-grid">
+                    <div class="term-card">
+                        <h4>Profit Share (Revenue)</h4>
+                        <p>We take a percentage of gross revenue until investment is returned + agreed profit %</p>
+                        <ul>
+                            <li>Keep 100% ownership</li>
+                            <li>Flexible repayment</li>
+                            <li>Revenue-based returns</li>
+                        </ul>
+                    </div>
+                    <div class="term-card">
+                        <h4>Profit Share (Net)</h4>
+                        <p>We take a percentage of net profit after expenses</p>
+                        <ul>
+                            <li>Keep 100% ownership</li>
+                            <li>Lower payments initially</li>
+                            <li>Profit-based returns</li>
+                        </ul>
+                    </div>
+                    <div class="term-card">
+                        <h4>Equity Investment</h4>
+                        <p>We take equity stake in your project</p>
+                        <ul>
+                            <li>Shared ownership</li>
+                            <li>Long-term partnership</li>
+                            <li>Strategic support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-funding-notice">
+                <h3>🏢 Company Fund Program</h3>
+                <p><strong>Special Admin Role:</strong> Our dedicated funding admins have access to company funds for strategic investments. All investments are:</p>
+                <ul>
+                    <li>✓ Fully documented and transparent</li>
+                    <li>✓ Subject to strict contractual agreements</li>
+                    <li>✓ Protected by violation clauses (10% equity + fees if misused)</li>
+                    <li>✓ Reviewed by oversight committee</li>
+                </ul>
+            </div>
+
+            <button class="btn-large btn-primary">Apply for Funding</button>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🎮 Game Products Marketplace</h2>
+                <p>Sell your games, assets, and tools. Like itch.io, but built for developers.</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Game">
+                    </div>
+                    <div class="product-info">
+                        <h3>Mystic Dungeon RPG</h3>
+                        <p class="product-dev">by @DevStudio</p>
+                        <p class="product-desc">Complete 2D RPG with 50+ hours of gameplay</p>
+                        <div class="product-footer">
+                            <span class="product-price">$9.99</span>
+                            <button class="btn-secondary">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Asset Pack">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fantasy UI Pack</h3>
+                        <p class="product-dev">by @PixelArtist</p>
+                        <p class="product-desc">200+ high-quality UI elements for RPGs</p>
+                        <div class="product-footer">
+                            <span class="product-price">$14.99</span>
+                            <button class="btn-secondary">View</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/300x200" alt="Tool">
+                    </div>
+                    <div class="product-info">
+                        <h3>Inventory System Pro</h3>
+                        <p class="product-dev">by @CodeMaster</p>
+                        <p class="product-desc">Complete inventory solution for Unity</p>
+                        <div class="product-footer">
+                            <span class="product-price">$24.99</span>
+                            <button class="btn-secondary">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" style="margin-top: 2rem;">Sell Your Product</button>
+        </div>
+    </section>
+
+    <!-- Open Source Section -->
+    <section id="opensource" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔓 Open Source Packages</h2>
+                <p>Community-voted packages funded by 10% of platform profits</p>
+            </div>
+
+            <div class="opensource-info">
+                <p class="info-text">Every month, our community votes on which open source packages should receive funding. 10% of all platform revenue goes directly to these projects to ensure the game dev ecosystem stays healthy and free.</p>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card official">
+                    <div class="package-header">
+                        <h3>UnityToolkit</h3>
+                        <span class="badge official-badge">OFFICIAL</span>
+                    </div>
+                    <p class="package-desc">Essential utilities for Unity development. FSM, pooling, event system, and more.</p>
+                    <div class="package-stats">
+                        <span>⭐ 1.2k stars</span>
+                        <span>💰 $500/mo funding</span>
+                        <span>📦 10k downloads</span>
+                    </div>
+                    <button class="btn-secondary">View on GitHub</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>GameNetCore</h3>
+                        <span class="badge community-badge">COMMUNITY</span>
+                    </div>
+                    <p class="package-desc">High-performance networking library for multiplayer games</p>
+                    <div class="package-stats">
+                        <span>⭐ 856 stars</span>
+                        <span>💰 $300/mo funding</span>
+                        <span>📦 5k downloads</span>
+                    </div>
+                    <button class="btn-secondary">View on GitHub</button>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3>PixelEngine2D</h3>
+                        <span class="badge community-badge">COMMUNITY</span>
+                    </div>
+                    <p class="package-desc">Lightweight 2D rendering engine with pixel-perfect rendering</p>
+                    <div class="package-stats">
+                        <span>⭐ 634 stars</span>
+                        <span>💰 $200/mo funding</span>
+                        <span>📦 3k downloads</span>
+                    </div>
+                    <button class="btn-secondary">View on GitHub</button>
+                </div>
+            </div>
+
+            <div class="voting-section">
+                <h3>Vote for Next Month's Funded Projects</h3>
+                <p>You get 3 votes. Voting closes in 15 days.</p>
+                <button class="btn-primary">Cast Your Votes</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>📚 Open Source Courses</h2>
+                <p>Free courses created by our admin team and community experts</p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h3>Game Development Fundamentals</h3>
+                    <p class="course-instructor">By Admin Team</p>
+                    <p class="course-desc">Learn the basics of game development, from design to deployment</p>
+                    <div class="course-meta">
+                        <span>⏱️ 8 hours</span>
+                        <span>📊 Beginner</span>
+                        <span>🎯 12 modules</span>
+                    </div>
+                    <button class="btn-primary">Start Learning</button>
+                </div>
+
+                <div class="course-card">
+                    <h3>Unity C# Mastery</h3>
+                    <p class="course-instructor">By Admin Team</p>
+                    <p class="course-desc">Advanced C# patterns and Unity best practices</p>
+                    <div class="course-meta">
+                        <span>⏱️ 12 hours</span>
+                        <span>📊 Advanced</span>
+                        <span>🎯 15 modules</span>
+                    </div>
+                    <button class="btn-primary">Start Learning</button>
+                </div>
+
+                <div class="course-card">
+                    <h3>Multiplayer Game Architecture</h3>
+                    <p class="course-instructor">By Admin Team</p>
+                    <p class="course-desc">Build scalable multiplayer games from scratch</p>
+                    <div class="course-meta">
+                        <span>⏱️ 10 hours</span>
+                        <span>📊 Intermediate</span>
+                        <span>🎯 10 modules</span>
+                    </div>
+                    <button class="btn-primary">Start Learning</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>About DevArena</h2>
+                <p>Built by developers, for developers</p>
+            </div>
+
+            <div class="about-content">
+                <h3>Our Mission</h3>
+                <p>We're tired of platforms that take 20-30% fees, allow scammers to thrive, and don't understand game development. DevArena was created to be different:</p>
+                
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <h4>🎯 Ultra-Low Fees</h4>
+                        <p>Only 2.5% to cover costs. We're not here for profit extraction.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>🛡️ Scam Prevention</h4>
+                        <p>Active admin team, escrow system, dispute resolution by game devs.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>🤝 Equal Opportunity</h4>
+                        <p>Every developer gets a fair shot, regardless of experience level.</p>
+                    </div>
+                    <div class="principle-card">
+                        <h4>💚 Open Source First</h4>
+                        <p>10% of profits fund community-voted open source projects.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">The Progression</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Phase 1: Community Building</h4>
+                        <p>Launch Discord servers for players, aspiring devs, and seasoned devs. Build the initial community around our featured game.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Phase 2: Platform Launch</h4>
+                        <p>Launch this website with full freelance, funding, and marketplace features. Some discussions move from Discord to web.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Phase 3: Mobile App</h4>
+                        <p>Extend the platform into a mobile app. Gradually migrate from Discord to the integrated app experience.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Admin Team</h3>
+                <p>Our admin team consists of experienced game developers who actively participate in funding decisions, dispute resolution, and community management. All admins must:</p>
+                <ul class="admin-requirements">
+                    <li>Have shipped at least one commercial game</li>
+                    <li>Maintain active involvement in the community</li>
+                    <li>Follow strict documentation and transparency requirements</li>
+                    <li>Sign comprehensive contracts with violation clauses</li>
+                </ul>
+
+                <h3 style="margin-top: 3rem;">Legal Protection</h3>
+                <p><strong>Contract Violation Consequences:</strong> Any admin who misuses company funds faces immediate termination, automatic transfer of 10% game equity to the company, full profit return requirements, and a $10,000 penalty fee.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>DevArena</h3>
+                    <p>The game developer platform built by developers, for developers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#freelance">Freelance</a></li>
+                        <li><a href="#funding">Funding</a></li>
+                        <li><a href="#marketplace">Marketplace</a></li>
+                        <li><a href="#opensource">Open Source</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Discord</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevArena. Built with ❤️ by game developers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modals -->
+    <div id="loginModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-modal" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login to DevArena</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Don't have an account? <a href="#" onclick="showSignupModal(); closeModal('loginModal');" style="color: var(--primary-color);">Sign Up</a>
+            </p>
+        </div>
+    </div>
+
+    <div id="signupModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-modal" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Create Account</h2>
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" minlength="6" required>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Create Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Already have an account? <a href="#" onclick="showLoginModal(); closeModal('signupModal');" style="color: var(--primary-color);">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Job Posting Modal -->
+    <div id="jobModal" class="auth-modal">
+        <div class="auth-modal-content" style="max-width: 700px;">
+            <span class="close-modal" onclick="closeModal('jobModal')">&times;</span>
+            <h2>Post a Job</h2>
+            <form id="jobForm" onsubmit="handleJobPost(event)">
+                <div class="form-group">
+                    <label>Job Title</label>
+                    <input type="text" id="jobTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="jobCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Programming">Programming</option>
+                        <option value="3D Modeling">3D Modeling</option>
+                        <option value="2D Art">2D Art</option>
+                        <option value="Sound Design">Sound Design</option>
+                        <option value="Game Design">Game Design</option>
+                        <option value="UI/UX">UI/UX</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Budget ($)</label>
+                    <input type="number" id="jobBudget" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="jobDescription" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Post Job</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Funding Application Modal -->
+    <div id="fundingModal" class="auth-modal">
+        <div class="auth-modal-content" style="max-width: 800px;">
+            <span class="close-modal" onclick="closeModal('fundingModal')">&times;</span>
+            <h2>Apply for Funding</h2>
+            <form id="fundingForm" onsubmit="handleFundingApplication(event)">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" id="projectName" required>
+                </div>
+                <div class="form-group">
+                    <label>Funding Type</label>
+                    <select id="fundingType" required>
+                        <option value="">Select Type</option>
+                        <option value="revenue-share">Revenue Share</option>
+                        <option value="profit-share">Profit Share (Net)</option>
+                        <option value="equity">Equity Investment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Amount Requested ($)</label>
+                    <input type="number" id="fundingAmount" min="1000" required>
+                </div>
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea id="fundingDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Team Information</label>
+                    <textarea id="teamInfo" placeholder="Team members, their roles, and experience"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Previous Work / Portfolio</label>
+                    <textarea id="previousWork" placeholder="Links to previous games, projects, or portfolio"></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-block">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <style>
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+        
+        .auth-modal.active {
+            display: flex;
+        }
+        
+        .auth-modal-content {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .close-modal {
+            float: right;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            line-height: 1;
+        }
+        
+        .close-modal:hover {
+            color: var(--danger-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--dark-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .btn-block {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <script src="src/firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
